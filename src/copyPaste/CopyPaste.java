@@ -1,29 +1,25 @@
 package copyPaste;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
- 
+
+import java.io.*;
+import java.util.Scanner;
+
 public class CopyPaste {
-   public static void main(String[] args) {
-      FileInputStream ins = null;
-      FileOutputStream outs = null;
-      try {
-         File copyFrom =new File("originFileToCopy.txt");
-         File copyTo =new File("destinyFileToCopy.txt");
-         ins = new FileInputStream(copyFrom);
-         outs = new FileOutputStream(copyTo);
-         byte[] buffer = new byte[1024];
-         int length;
-         
-         while ((length = ins.read(buffer)) > 0) {
-            outs.write(buffer, 0, length);
-         } 
-         ins.close();
-         outs.close();
-         System.out.println("File copied successfully!!");
-      } catch(IOException ioe) {
-         ioe.printStackTrace();
-      } 
-   }
+	public static void main(String[] args) {
+		if (args.length == 2) {
+			try {
+				String copyFrom = args[0];
+				String copyTo = args[1];
+				Scanner sc = new Scanner(System.in);
+				BufferedWriter writer = new BufferedWriter(new FileWriter(args[1]));
+			    writer.write();
+				sc.close();
+			//if it doesn't find the file will show this:
+			} catch (FileNotFoundException e) {
+				System.out.println("You have to enter the path of one text file.");
+				System.out.println("You can try with the example I made: example.txt");
+			}
+		}else {
+			System.out.println("Define from what text file to what text file you want to copy-paste the text.");
+		}
+	}
 }
