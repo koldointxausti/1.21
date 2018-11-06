@@ -10,9 +10,11 @@ public class CopyPaste {
 				String copyFrom = args[0];
 				String copyTo = args[1];
 				Scanner sc = new Scanner(System.in);
-				BufferedWriter writer = new BufferedWriter(new FileWriter(args[1]));
-			    writer.write();
-				sc.close();
+				BufferedReader br = new BufferedReader(new FileReader(originFileToCopy));
+		   		BufferedWriter bw = new BufferedWriter(new FileWriter(destinyFileToCopy));
+		  		bw.write(br.read());
+		    		br.close();
+		    		bw.close();
 			//if it doesn't find the file will show this:
 			} catch (FileNotFoundException e) {
 				System.out.println("You have to enter the path of one text file.");
